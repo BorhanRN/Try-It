@@ -20,7 +20,15 @@ public class Book {
         pages.remove(pageNum - 1);
     }
 
-    public void editPage(Page editedPage) throws Exception {
+    public Page getPage(int pageNum) {
+        return this.pages.get(pageNum - 1);
+    }
+
+}
+
+
+/*
+public void editPage(Page editedPage) throws Exception {
         for (int i = 0; i < this.pages.size(); i++) {
             if (this.pages.get(i).getPageID() == editedPage.getPageID()) {
                 this.pages.set(i, editedPage);
@@ -30,12 +38,4 @@ public class Book {
         //if code does not find page, will throw error
         throw new Exception("page not found");
     }
-
-    public Page getPage(int pageNum) {
-        return this.pages.get(pageNum - 1);
-    }
-
-    public ArrayList<Page> getPages() {
-        return pages;
-    }
-}
+ */
