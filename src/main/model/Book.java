@@ -5,37 +5,42 @@ import java.util.ArrayList;
 // a list of pages
 public class Book {
     private ArrayList<Page> pages;
+    private Page page;
 
 
     public Book() {
         this.pages = new ArrayList();
     }
 
+    // MODIFIES: this
+    // EFFECTS: adds new page onto pages
     public int addPage(Page page) {
         pages.add(page);
         return this.pages.size();
     }
 
+    // MODIFIES: this
+    // EFFECTS: removes selected page from pages
     public void removePage(int pageNum) {
         pages.remove(pageNum - 1);
     }
 
+    // EFFECTS: returns selected page from pages
     public Page getPage(int pageNum) {
         return this.pages.get(pageNum - 1);
     }
 
-}
 
-
-/*
-public void editPage(Page editedPage) throws Exception {
-        for (int i = 0; i < this.pages.size(); i++) {
-            if (this.pages.get(i).getPageID() == editedPage.getPageID()) {
-                this.pages.set(i, editedPage);
-                return;
-            }
-        }
-        //if code does not find page, will throw error
-        throw new Exception("page not found");
+    public int size() {
+        return pages.size();
     }
- */
+
+    // MODIFIES: this
+    // EFFECTS: edits an existing page
+    public void editPage(int i, String title, int rating, String description) {
+        --i;
+        pages.get(i).changeTitle(title);
+        pages.get(i).changeRating(rating);
+        pages.get(i).changeDescription(description);
+    }
+}

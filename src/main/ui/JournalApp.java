@@ -9,6 +9,7 @@ import java.util.Scanner;
 public class JournalApp {
 
     private Book book;
+    private Page page;
     private Scanner input;
 
     // EFFECTS: runs the teller application
@@ -53,6 +54,7 @@ public class JournalApp {
         System.out.println("\ta -> add page");
         System.out.println("\tr -> remove page");
         System.out.println("\tv -> view page");
+        System.out.println("\te -> edit page");
         System.out.println("\tq -> quit");
     }
 
@@ -65,6 +67,9 @@ public class JournalApp {
             doRemovePage();
         } else if (command.equals("v")) {
             doViewPage();
+
+        } else if (command.equals("e")) {
+            doEditPage();
         } else {
             System.out.println("Selection not valid...");
         }
@@ -94,10 +99,13 @@ public class JournalApp {
     private void doRemovePage() {
         System.out.println("Which page would you like to remove?");
         int remove = input.nextInt();
+        if (remove > book.size()) {
+            System.out.println("This page doesn't exist");
+            return;
+        }
         book.removePage(remove);
         System.out.println("Page was successfully removed!");
     }
-
 
     // REQUIRES: page to view must exist
     // MODIFIES: this
@@ -105,35 +113,33 @@ public class JournalApp {
     private void doViewPage() {
         System.out.println("Which page would you like to view?");
         int view = input.nextInt();
+        if (view > book.size()) {
+            System.out.println("This page doesn't exist");
+            return;
+        }
         System.out.println(book.getPage(view).getTitle());
         System.out.println(book.getPage(view).getRating());
         System.out.println(book.getPage(view).getDescription());
     }
 
-}
-
-/*
- System.out.println("\te -> edit page");
-
- else if (command.equals("e")) {
-            doEditPage();
-
-// REQUIRES: page to edit must exist
+    // REQUIRES: page to edit must exist
     // MODIFIES: this
     // EFFECTS: edits an existing page
     private void doEditPage() {
         System.out.println("Which page would you like to edit?");
         int edit = input.nextInt();
-        book.editPage(edit);
-
+        if (edit > book.size()) {
+            System.out.println("This page doesn't exist");
+            return;
+        }
         System.out.println("Give this page a new title");
         String title = input.next();
         System.out.println("Give this page a new rating from 1-10");
         int rating = input.nextInt();
         System.out.println("Give this page a new description");
         String description = input.next();
-
-        book.editPage(title, rating, description);
-
+        book.editPage(edit, title, rating, description);
     }
- */
+
+
+}

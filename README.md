@@ -31,8 +31,7 @@ all of life's experiences can be kept handy. It is like an interactive journal.
 
 ### User Stories
 
-- As a user, I want to be able to add an item entry to my journal
-- As a user, I want to be able to give the item necessary ratings and descriptions
-- As a user, I want to be able to update my item entry and have it show past logs
-- As a user, I want to be able to group similar item entries into a single category or "chapter"
-(keeping the journal theme)
+- As a user, I want to be able to add an item entry to my journal with necessary ratings and descriptions
+- As a user, I want to be able to view previously made entries
+- As a user, I want to be able to remove an item entry to my journal
+- As a user, I want to be able to update my item entry

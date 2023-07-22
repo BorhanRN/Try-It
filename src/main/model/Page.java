@@ -7,7 +7,6 @@ public class Page {
     private String title;
     private int rating;
     private String description;
-    private String pageID;
 
     // MODIFIES: this
     // EFFECTS: initialize title, rating, description
@@ -15,8 +14,8 @@ public class Page {
         this.title = title;
         this.rating = rating;
         this.description = description;
-        this.pageID = UUID.randomUUID().toString();
     }
+
 
     // MODIFIES: this
     // EFFECTS: changes a title
@@ -25,12 +24,10 @@ public class Page {
         return this.title;
     }
 
+    // REQUIRES: rating must be [1, 10]
     // MODIFIES: this
     // EFFECTS: changes a rating
-    public int changeRating(int newRating) throws Exception {
-        if (newRating < 1 || newRating > 10) {
-            throw new Exception("invalid rating");
-        }
+    public int changeRating(int newRating) {
         this.rating = newRating;
         return this.rating;
     }
@@ -55,10 +52,5 @@ public class Page {
     // EFFECTS: returns pages description
     public String getDescription() {
         return description;
-    }
-
-    // EFFECTS: returns pages random ID
-    public String getPageID() {
-        return pageID;
     }
 }
