@@ -35,3 +35,5 @@ all of life's experiences can be kept handy. It is like an interactive journal.
 - As a user, I want to be able to view previously made entries
 - As a user, I want to be able to remove an item entry to my journal
 - As a user, I want to be able to update my item entry
+- As a user, I want to be able to have the option to save the entire state of the application to file
+- As a user, I want to be able to load a state from file and resume where I left off
