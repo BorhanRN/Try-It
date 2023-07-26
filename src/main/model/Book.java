@@ -19,12 +19,14 @@ public class Book {
         return this.pages.size();
     }
 
+    // REQUIRES: selected page must exist, pageNum > 0
     // MODIFIES: this
     // EFFECTS: removes selected page from pages
     public void removePage(int pageNum) {
         pages.remove(pageNum - 1);
     }
 
+    // REQUIRES: selected page must exist
     // EFFECTS: returns selected page from pages
     public Page getPage(int pageNum) {
         return this.pages.get(pageNum - 1);
@@ -35,6 +37,7 @@ public class Book {
         return pages.size();
     }
 
+    // REQUIRES: selected page must exist
     // MODIFIES: this
     // EFFECTS: edits an existing page
     public void editPage(int i, String title, int rating, String description) {
