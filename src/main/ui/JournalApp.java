@@ -62,7 +62,8 @@ public class JournalApp {
         System.out.println("\nSelect from:");
         System.out.println("\ta -> add page");
         System.out.println("\tr -> remove page");
-        System.out.println("\tv -> view page");
+        System.out.println("\tv -> view specific page");
+        System.out.println("\tva -> view all pages");
         System.out.println("\te -> edit page");
         System.out.println("\ts -> save book to file");
         System.out.println("\tl -> load book from file");
@@ -78,6 +79,8 @@ public class JournalApp {
             doRemovePage();
         } else if (command.equals("v")) {
             doViewPage();
+        } else if (command.equals("va")) {
+            doViewAll();
         } else if (command.equals("e")) {
             doEditPage();
         } else if (command.equals("s")) {
@@ -133,6 +136,16 @@ public class JournalApp {
         System.out.println(book.getPage(view).getTitle());
         System.out.println(book.getPage(view).getRating());
         System.out.println(book.getPage(view).getDescription());
+    }
+
+    // EFFECTS: prints all existing pages
+    private void doViewAll() {
+        for (int i = 0; i < book.size(); i++) {
+            System.out.println("Page " + (i + 1) + ":");
+            System.out.println(book.getPages().get(i).getTitle());
+            System.out.println(book.getPages().get(i).getRating());
+            System.out.println(book.getPages().get(i).getDescription());
+        }
     }
 
     // REQUIRES: page to edit must exist
