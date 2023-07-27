@@ -1,9 +1,12 @@
 package model;
 
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.UUID;
 
 // represents an entry in a journal having a title, rating and description
-public class Page {
+public class Page implements Writable {
     private String title;
     private int rating;
     private String description;
@@ -41,7 +44,7 @@ public class Page {
 
     // EFFECTS: returns pages title
     public String getTitle() {
-        return this.title;
+        return title;
     }
 
     // EFFECTS: returns pages rating
@@ -52,5 +55,14 @@ public class Page {
     // EFFECTS: returns pages description
     public String getDescription() {
         return description;
+    }
+
+    //EFFECTS: converts page to json
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("title", title);
+        json.put("rating", rating);
+        json.put("description", description);
+        return json;
     }
 }

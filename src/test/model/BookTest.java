@@ -91,7 +91,7 @@ public class BookTest {
 
 
     @Test
-    void TestSize() {
+    void testSize() {
         assertEquals(0, testBook.size());
         Page page1 = new Page("abc", 5, "def");
         Page page2 = new Page("title", 8, "test");
@@ -104,4 +104,8 @@ public class BookTest {
         assertEquals(3, testBook.size());
     }
 
+    @Test
+    void testGetPages() {
+
+    }
 }

@@ -1,12 +1,17 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 // a list of pages
-public class Book {
+public class Book implements Writable {
     private ArrayList<Page> pages;
     private Page page;
-
 
     public Book() {
         this.pages = new ArrayList();
@@ -32,6 +37,10 @@ public class Book {
         return this.pages.get(pageNum - 1);
     }
 
+    // EFFECTS: returns an unmodifiable list of thingies in this workroom
+    public List<Page> getPages() {
+        return Collections.unmodifiableList(pages);
+    }
 
     public int size() {
         return pages.size();
@@ -45,5 +54,23 @@ public class Book {
         pages.get(i).changeTitle(title);
         pages.get(i).changeRating(rating);
         pages.get(i).changeDescription(description);
+    }
+
+
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("pages", pagesToJson());
+        return json;
+    }
+
+    // EFFECTS: returns pages in this book as a JSON array
+    private JSONArray pagesToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Page p : pages) {
+            jsonArray.put(p.toJson());
+        }
+
+        return jsonArray;
     }
 }

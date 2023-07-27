@@ -2,27 +2,36 @@ package ui;
 
 import model.Book;
 import model.Page;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
 
 // journal application
 public class JournalApp {
-
+    private static final String JSON_STORE = "./data/book.json";
     private Book book;
     private Page page;
     private Scanner input;
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
 
-    // EFFECTS: runs the teller application
+
+    // EFFECTS: runs the journal application
     public JournalApp() {
         runJournal();
     }
 
     // MODIFIES: this
-    // EFFECTS: initializes accounts
+    // EFFECTS: initializes books
     private void init() {
         book = new Book();
         input = new Scanner(System.in);
         input.useDelimiter("\n");
+        jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new JsonReader(JSON_STORE);
     }
 
     // MODIFIES: this
@@ -55,6 +64,8 @@ public class JournalApp {
         System.out.println("\tr -> remove page");
         System.out.println("\tv -> view page");
         System.out.println("\te -> edit page");
+        System.out.println("\ts -> save book to file");
+        System.out.println("\tl -> load book from file");
         System.out.println("\tq -> quit");
     }
 
@@ -67,14 +78,16 @@ public class JournalApp {
             doRemovePage();
         } else if (command.equals("v")) {
             doViewPage();
-
         } else if (command.equals("e")) {
             doEditPage();
+        } else if (command.equals("s")) {
+            saveBook();
+        } else if (command.equals("l")) {
+            loadBook();
         } else {
             System.out.println("Selection not valid...");
         }
     }
-
 
     // MODIFIES: this
     // EFFECTS: creates a new page
@@ -139,6 +152,29 @@ public class JournalApp {
         System.out.println("Give this page a new description");
         String description = input.next();
         book.editPage(edit, title, rating, description);
+    }
+
+    // EFFECTS: saves the book to file
+    private void saveBook() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(book);
+            jsonWriter.close();
+            System.out.println("Saved " + "to " + JSON_STORE);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_STORE);
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: loads book from file
+    private void loadBook() {
+        try {
+            book = jsonReader.read();
+            System.out.println("Loaded " + "from " + JSON_STORE);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STORE);
+        }
     }
 
 
