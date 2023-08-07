@@ -141,7 +141,7 @@ public class JournalApp {
     // EFFECTS: prints all existing pages
     private void doViewAll() {
         for (int i = 0; i < book.size(); i++) {
-            System.out.println("Page " + (i + 1) + ":");
+            System.out.println("Entry " + (i + 1) + ":");
             System.out.println(book.getPages().get(i).getTitle());
             System.out.println(book.getPages().get(i).getRating());
             System.out.println(book.getPages().get(i).getDescription());
