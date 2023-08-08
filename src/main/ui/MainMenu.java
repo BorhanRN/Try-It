@@ -6,6 +6,7 @@ import persistence.JsonReader;
 import persistence.JsonWriter;
 
 import javax.swing.*;
+import javax.swing.text.View;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -85,15 +86,15 @@ public class MainMenu extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == addButton) {
-            new ...;
+            new NewEntryFrame(book);
         } else if (e.getSource() == removeButton) {
-            new ....
+            new RemoveFrame(book);
         } else if (e.getSource() == viewButton) {
-            new ...;
+            new ViewSingleFrame(book);
         } else if (e.getSource() == viewAllButton) {
-            new ...;
+            new ViewFrame(book);
         } else if (e.getSource() == editButton) {
-            new ...;
+            new EditFrame(book);
         } else if (e.getSource() == saveButton) {
             saveInventory();
         } else if (e.getSource() == loadButton) {
