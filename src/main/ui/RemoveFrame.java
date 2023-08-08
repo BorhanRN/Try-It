@@ -5,6 +5,7 @@ import model.Book;
 import model.Page;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -30,6 +31,8 @@ public class RemoveFrame extends JFrame implements ActionListener {
         makePanel();
     }
 
+    // MODIFIES: this
+    // EFFECTS: creates title label and text field
     public void makePanel() {
         selector.setBounds(10, 10, 100, 50);
         panel.add(selector);
@@ -41,6 +44,8 @@ public class RemoveFrame extends JFrame implements ActionListener {
 
     }
 
+    // MODIFIES: this
+    // EFFECTS: removes an entry the book
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == button) {
@@ -60,7 +65,7 @@ public class RemoveFrame extends JFrame implements ActionListener {
             JLabel successMessage = new JLabel("Page " + Integer.parseInt(num) + " successfully removed!");
 
             panel.add(successMessage);
-            panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+            panel.setLayout(new GridBagLayout());
         }
     }
 }

@@ -40,3 +40,8 @@ all of life's experiences can be kept handy. It is like an interactive journal.
 
 ### Instructions for Grader
 
+- You can generate the first required action related to adding Xs to a Y by creating a new entry
+- You can generate the second required action related to adding Xs to a Y by editing, viewing, or removing entries
+- You can locate my visual component on start up
+- You can save the state of my application by pressing the save button
+- You can reload the state of my application by pressing the load button

@@ -4,6 +4,7 @@ import model.Book;
 import model.Page;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -32,6 +33,8 @@ public class ViewSingleFrame extends JFrame implements ActionListener {
         makePanel();
     }
 
+    // MODIFIES: this
+    // EFFECTS: creates corresponding label and text field
     public void makePanel() {
         selector.setBounds(10, 10, 100, 50);
         panel.add(selector);
@@ -43,10 +46,13 @@ public class ViewSingleFrame extends JFrame implements ActionListener {
 
     }
 
+    // MODIFIES: this
+    // EFFECTS: displays the selected entry
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == button) {
             String num = entryNum.getText();
+            frame.dispose();
 
             panel = new JPanel();
             frame = new JFrame();

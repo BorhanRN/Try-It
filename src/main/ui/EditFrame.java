@@ -3,6 +3,7 @@ package ui;
 import model.Book;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -16,7 +17,7 @@ public class EditFrame extends JFrame implements ActionListener {
     JTextField rating = new JTextField("Enter new rating out of 10");
     JLabel descriptionLabel = new JLabel("Describe it...");
     JTextField description = new JTextField("Enter new description");
-    JTextField pageNum = new JTextField("");
+    JTextField entryNum = new JTextField("");
     JButton button = new JButton("Done");
 
 
@@ -37,9 +38,9 @@ public class EditFrame extends JFrame implements ActionListener {
         JLabel header = new JLabel("Which Entry Would You Like To Edit?");
         header.setBounds(10, 10, 150, 30);
         panel.add(header);
-        pageNum.setBounds(200, 10, 50, 30);
-        pageNum.setText("");
-        panel.add(pageNum);
+        entryNum.setBounds(200, 10, 50, 30);
+        entryNum.setText("");
+        panel.add(entryNum);
 
         titleLabel.setBounds(10, 50, 100, 30);
         panel.add(titleLabel);
@@ -69,12 +70,25 @@ public class EditFrame extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == button) {
-            String i = pageNum.getText();
+            String i = entryNum.getText();
             String t = title.getText();
             String r = rating.getText();
             String d = description.getText();
             book.editPage(Integer.parseInt(i), t, Integer.parseInt(r), d);
             frame.dispose();
+
+            panel = new JPanel();
+            frame = new JFrame();
+            frame.setSize(300, 150);
+            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            frame.add(panel);
+            frame.setResizable(true);
+            frame.setVisible(true);
+
+            JLabel successMessage = new JLabel("Page " + Integer.parseInt(i) + " successfully edited!");
+
+            panel.add(successMessage);
+            panel.setLayout(new GridBagLayout());
         }
     }
 }

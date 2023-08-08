@@ -1,13 +1,10 @@
 package ui;
 
 import model.Book;
-import model.Page;
 import persistence.JsonReader;
 import persistence.JsonWriter;
 
 import javax.swing.*;
-import javax.swing.text.View;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
@@ -20,7 +17,7 @@ public class MainMenu extends JFrame implements ActionListener {
     private JsonWriter jsonWriter;
     private JsonReader jsonReader;
     private static final String JSON_STORE = "./data/book.json";
-    private JFrame frame = new JFrame("TRYit");
+    private JFrame frame = new JFrame("TRY it");
     private JPanel panel = new JPanel();
 
     private JButton addButton = new JButton("New Entry");

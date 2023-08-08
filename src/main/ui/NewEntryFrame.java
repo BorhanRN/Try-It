@@ -4,6 +4,7 @@ import model.Book;
 import model.Page;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -22,55 +23,42 @@ public class NewEntryFrame extends JFrame implements ActionListener {
     // EFFECTS: constructs NewEntryFrame with buttons
     public NewEntryFrame(Book book) {
         this.book = book;
-        frame.setSize(225, 150);
+        frame.setSize(250, 250);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.add(panel);
         frame.setVisible(true);
 
-        addTitle();
-        addRating();
-        addDescription();
-        addButton();
+        makeNewEntry();
     }
 
     // MODIFIES: this
-    // EFFECTS: creates title button and text field
-    public void addTitle() {
+    // EFFECTS: creates title labels and text field corresponding to a new entry
+    public void makeNewEntry() {
         titleLabel.setBounds(10, 20, 100, 30);
         panel.add(titleLabel);
         title.setBounds(100, 20, 200, 30);
         panel.add(title);
-    }
 
-    // MODIFIES: this
-    // EFFECTS: creates rating button and text field
-    public void addRating() {
         ratingLabel.setBounds(10, 60, 100, 30);
         panel.add(ratingLabel);
         rating.setBounds(100, 600, 200, 30);
         panel.add(rating);
-    }
 
-    // MODIFIES: this
-    // EFFECTS: creates description button and text field
-    public void addDescription() {
         descriptionLabel.setBounds(10, 100, 100, 30);
         panel.add(descriptionLabel);
         description.setBounds(100, 100, 200, 30);
         panel.add(description);
-    }
 
-    //MODIFIES: this
-    //EFFECTS: creates add button
-    public void addButton() {
         addButton.setBounds(10, 140, 100, 30);
         addButton.addActionListener(this);
         panel.add(addButton);
+
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
     }
 
 
-    //MODIFIES: this
-    //EFFECTS: makes a new product and adds to the inventory
+    // MODIFIES: this
+    // EFFECTS: makes a new entry and adds to the book
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == addButton) {
@@ -79,6 +67,18 @@ public class NewEntryFrame extends JFrame implements ActionListener {
             String d = description.getText();
             book.addPage(new Page(t, Integer.parseInt(r), d));
             frame.dispose();
+
+            panel = new JPanel();
+            frame = new JFrame();
+            frame.setSize(300, 150);
+            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            frame.add(panel);
+            frame.setResizable(true);
+            frame.setVisible(true);
+
+            JLabel successMessage = new JLabel("Entry Successfully Added!");
+            panel.add(successMessage);
+            panel.setLayout(new GridBagLayout());
         }
     }
 }
