@@ -1,8 +1,6 @@
 package ui;
 
-
 import model.Book;
-import model.Page;
 
 import javax.swing.*;
 import java.awt.*;
@@ -62,7 +60,7 @@ public class RemoveFrame extends JFrame implements ActionListener {
 
             book.removePage(Integer.parseInt(num));
 
-            JLabel successMessage = new JLabel("Page " + Integer.parseInt(num) + " successfully removed!");
+            JLabel successMessage = new JLabel("Entry " + Integer.parseInt(num) + " successfully removed!");
 
             panel.add(successMessage);
             panel.setLayout(new GridBagLayout());

@@ -85,7 +85,7 @@ public class EditFrame extends JFrame implements ActionListener {
             frame.setResizable(true);
             frame.setVisible(true);
 
-            JLabel successMessage = new JLabel("Page " + Integer.parseInt(i) + " successfully edited!");
+            JLabel successMessage = new JLabel("Entry " + Integer.parseInt(i) + " successfully edited!");
 
             panel.add(successMessage);
             panel.setLayout(new GridBagLayout());

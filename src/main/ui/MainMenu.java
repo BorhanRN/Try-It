@@ -17,7 +17,7 @@ public class MainMenu extends JFrame implements ActionListener {
     private JsonWriter jsonWriter;
     private JsonReader jsonReader;
     private static final String JSON_STORE = "./data/book.json";
-    private JFrame frame = new JFrame("TRY it");
+    private JFrame frame = new JFrame("TRY it - Main Menu");
     private JPanel panel = new JPanel();
 
     private JButton addButton = new JButton("New Entry");
@@ -80,6 +80,8 @@ public class MainMenu extends JFrame implements ActionListener {
         panel.add(quitButton);
     }
 
+    // MODIFIES: this
+    // EFFECTS: opens new corresponding frame based on the button pressed
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == addButton) {
