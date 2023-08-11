@@ -45,3 +45,14 @@ all of life's experiences can be kept handy. It is like an interactive journal.
 - You can locate my visual component in the form of a logo on start up
 - You can save the state of my application by pressing the save button in the main menu
 - You can reload the state of my application by pressing the load button in the main menu
+
+### Phase 4: Task 3
+
+- I would move all test classes into their own separate package
+- I would likely remove the view a single frame feature because with the addition of viewing all frames it seems redundant.
+Otherwise, I would refactor the feature to have new and improved functionality to make it more useful.
+- One feature I would like to add is giving each entry its own unique id number to be passed into the edit, remove and view methods.
+With this addition it would be possible to refer to entries by their id number rather than by their spot in the array list.
+For example, in a list with 4 entries, when one is removed from the middle the user will not have to mentally shift all other entries
+over 1 index (removing entry 2 makes entry 3 become 2 and 4 become 3). Another way to do this would be to search the list of entries
+by title or some other identifying feature that remains constant.

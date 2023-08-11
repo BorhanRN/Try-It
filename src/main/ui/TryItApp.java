@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.util.Scanner;
 
 // journal application
-public class JournalApp {
+public class TryItApp {
     private static final String JSON_STORE = "./data/book.json";
     private Book book;
     private Page page;
@@ -20,7 +20,7 @@ public class JournalApp {
 
 
     // EFFECTS: runs the journal application
-    public JournalApp() {
+    public TryItApp() {
         runJournal();
     }
 
