@@ -21,6 +21,9 @@ public class Book implements Writable {
     // EFFECTS: adds new page onto pages
     public int addPage(Page page) {
         pages.add(page);
+
+        Event log = new Event("Entry " + page.getTitle() + " added!");
+        EventLog.getInstance().logEvent(log);
         return this.pages.size();
     }
 
@@ -29,6 +32,8 @@ public class Book implements Writable {
     // EFFECTS: removes selected page from pages
     public void removePage(int pageNum) {
         pages.remove(pageNum - 1);
+        Event log = new Event("Entry " + pages.get(pageNum - 1).getTitle() + " removed!");
+        EventLog.getInstance().logEvent(log);
     }
 
     // REQUIRES: selected page must exist
@@ -54,6 +59,9 @@ public class Book implements Writable {
         pages.get(i).changeTitle(title);
         pages.get(i).changeRating(rating);
         pages.get(i).changeDescription(description);
+
+        Event log = new Event("Entry " + pages.get(i).getTitle() + " edited!");
+        EventLog.getInstance().logEvent(log);
     }
 
 

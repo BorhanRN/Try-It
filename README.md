@@ -1,6 +1,6 @@
 # My Personal Project
 
-##  TRY it - Experience Tracker*
+##  TRY it - Experience Tracker
 
 ### Overview
 

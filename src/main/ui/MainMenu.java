@@ -1,6 +1,8 @@
 package ui;
 
 import model.Book;
+import model.Event;
+import model.EventLog;
 import persistence.JsonReader;
 import persistence.JsonWriter;
 
@@ -17,7 +19,7 @@ public class MainMenu extends JFrame implements ActionListener {
     private JsonWriter jsonWriter;
     private JsonReader jsonReader;
     private static final String JSON_STORE = "./data/book.json";
-    private JFrame frame = new JFrame("TRY it - Main Menu");
+    private JFrame frame = new JFrame("TRY it - Experience Tracker");
     private JPanel panel = new JPanel();
 
     private JButton addButton = new JButton("New Entry");
@@ -99,6 +101,7 @@ public class MainMenu extends JFrame implements ActionListener {
         } else if (e.getSource() == loadButton) {
             loadInventory();
         } else if (e.getSource() == quitButton) {
+            printLog();
             quit();
         }
     }
@@ -124,6 +127,14 @@ public class MainMenu extends JFrame implements ActionListener {
             System.out.println("Loaded all entries from " + JSON_STORE);
         } catch (IOException e) {
             System.out.println("Unable to read from file: " + JSON_STORE);
+        }
+    }
+
+    public void printLog() {
+        EventLog eventLog = EventLog.getInstance();
+        for (Event event : eventLog) {
+            System.out.println("\n");
+            System.out.println(event);
         }
     }
 
