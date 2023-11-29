@@ -11,7 +11,7 @@ public class RemoveFrame extends JFrame implements ActionListener {
     private Book book;
     private JFrame frame = new JFrame("Remove An Entry");
     private JPanel panel = new JPanel();
-    JLabel selector = new JLabel("Which Entry Would You Like To Remove");
+    JLabel selector = new JLabel("Which Entry Number Would You Like To Remove");
     JTextField entryNum = new JTextField("");
     JButton button = new JButton("Remove");
 

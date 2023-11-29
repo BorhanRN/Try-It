@@ -35,7 +35,7 @@ public class EditFrame extends JFrame implements ActionListener {
     // MODIFIES: this
     // EFFECTS: constructs edit frame
     public void editEntry() {
-        JLabel header = new JLabel("Which Entry Would You Like To Edit?");
+        JLabel header = new JLabel("Which Entry Number Would You Like To Edit?");
         header.setBounds(10, 10, 150, 30);
         panel.add(header);
         entryNum.setBounds(200, 10, 50, 30);
